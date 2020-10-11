@@ -9,6 +9,8 @@
 ## How to use on the command line
 
 ```
-Rscript hw2_107751005.R --target bad/good --badthre <threshold> --input meth1 meth2 ... methx --output result.csv
+Rscript hw2_107751005.R --target bad/good --badthre <threshold> --input method1.csv method2.csv ... methodx.csv --output result.csv
 
 ```
+## Output
+method,sensitivity,specificity,F1,logLikelihood,pseudoR2
