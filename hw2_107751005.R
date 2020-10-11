@@ -36,7 +36,6 @@ d <- list()
 S <- 0
 j <- list()
 h <- list()
-s <- list()
 pred_label <- list()
 cf <- list()
 tp <- list()
@@ -71,7 +70,7 @@ for(i in files){
   pNull[[i]] <- sum(j[[i]])/dim(d[[i]])[[1]]
   logli_nullModel[[i]] <- sum(j[[i]])*log(pNull[[i]]) + sum(ifelse(d[[i]]$reference==query_m,0,1))*log(1-pNull[[i]])
   pseudo_R_squared[[i]] <- 1-(-2*(logli_model[[i]]-S))/(-2*(logli_nullModel[[i]]-S))
-  mydata[[i]] <- data.frame(h[[i]],sensitivity[[i]],specificity[[i]],f1_score[[i]],logli_model[[i]],pseudo_R_squared[[i]])
+  mydata[[i]] <- data.frame(h[[i]],round(sensitivity[[i]],2),round(specificity[[i]],2),round(f1_score[[i]],2),round(logli_model[[i]],2),round(pseudo_R_squared[[i]],2))
   names(mydata[[i]]) <- c("method","sensitivity","specificity","F1","Loglikelihood","pseudoR2")
   df <- rbind(df, mydata[[i]])
 }
