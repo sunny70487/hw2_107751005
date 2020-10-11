@@ -63,10 +63,10 @@ for(i in files){
   tn[[i]] <- cf[[i]][1, 1]
   fp[[i]] <- cf[[i]][2, 1]
   fn[[i]] <- cf[[i]][1, 2]
-  precsion[[i]] <- (tp[[i]] )/(tp[[i]] + fp[[i]])
+  precision[[i]] <- (tp[[i]] )/(tp[[i]] + fp[[i]])
   sensitivity[[i]] <- tp[[i]]/(tp[[i]] + fn[[i]])
   specificity[[i]] <- tn[[i]]/(tn[[i]] + fp[[i]])
-  f1_score[[i]] <- (2*precsion[[i]]*sensitivity[[i]])/(precsion[[i]]+sensitivity[[i]])
+  f1_score[[i]] <- (2*precision[[i]]*sensitivity[[i]])/(precision[[i]]+sensitivity[[i]])
   logli_model[[i]] <- sum(ifelse(d[[i]]$reference==query_m,log(d[[i]]$pred.score),log(1-d[[i]]$pred.score)))
   pNull[[i]] <- sum(j[[i]])/dim(d[[i]])[[1]]
   logli_nullModel[[i]] <- sum(j[[i]])*log(pNull[[i]]) + sum(ifelse(d[[i]]$reference==query_m,0,1))*log(1-pNull[[i]])
