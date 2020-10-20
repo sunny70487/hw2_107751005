@@ -1,6 +1,6 @@
 args = commandArgs(trailingOnly=TRUE)
 if (length(args)==0) {
-  stop("USAGE: Rscript hw2_yourID.R --target male|female --input file1 file2 ... filen --output out.csv", call.=FALSE)
+  stop("USAGE: Rscript hw2_yourID.R --target bad|good --input method1.csv method2.csv ... methodn.csv --output out.csv", call.=FALSE)
 }
 # parse parameters
 i<-1 
