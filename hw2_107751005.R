@@ -29,9 +29,6 @@ print("PROCESS")
 print(paste("query mode :", query_m))
 print(paste("output file:", out_f))
 print(paste("files      :", files))
-
-dir = file.path(getwd(),"data","/") #data path
-dir_o=file.path(getwd(),"eval","/") #output path
 #set null list
 d <- list()
 s <- 0
@@ -56,7 +53,7 @@ mydata <- list()
 df <- data.frame()
 for(i in files){
   h[[i]]<-gsub(".csv", "", basename(i)) #for index name
-  d[[i]] <- read.csv(paste(dir,i,sep="")) #read specific file
+  d[[i]] <- read.csv(i,header=T) #read specific file
   j[[i]] <- ifelse(d[[i]]$reference==query_m,1,0) #transformation reference for numeric
   pred_label[[i]] <- as.integer(d[[i]]$pred.score >thre) #set threthold
   cf[[i]] <- table(pred_label[[i]], j[[i]]) #confusion matrix
@@ -83,5 +80,5 @@ for(s in 2:length(df)){
 k <- data.frame(c("max",l[[2]],l[[3]],l[[4]],l[[5]],l[[6]]))
 names(k) <- c("method","sensitivity","specificity","F1","Loglikelihood","pseudoR2")
 df <- rbind(df,k)
-write.csv(df,file=paste(dir_o,out_f,sep=""),row.names=FALSE) #write output file
-read.csv(paste(dir_o,out_f, sep=""), header=T) #show result
+write.csv(df,file=out_f,row.names=FALSE) #write output file
+read.csv(out_f, header=T) #show result
